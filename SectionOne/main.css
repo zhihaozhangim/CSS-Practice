@@ -1,0 +1,57 @@
+/* 
+    This is a body selector, the children under the body will inherit its
+    property and attribute, but the priority from inheritance is pretty low.
+ */
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+#product-overview {
+    background: #ff1b68;
+}
+
+.section-title {
+    color: #2ddf5c;
+    
+    /* inherit is used to increase the priority of the inherited property */
+    /* font-family: inherit; */
+}
+
+/* Combinator: select h1 tag inside element with an id of product-overview */
+/* More specific selectors have higher priority */
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+/* 
+    CSS stands for Cascading Style Sheets.
+    Cascading means multiple rules can apply to the same element. When it happens,
+    the conflict would be resolved by using specificity rules. The specificity order 
+    is as follows (from highest to lowest):
+        1. Inline style
+        2. #ID selectors
+        3. .class, :pseudo-class, [attribute] selector    
+        4. HTML <Tag>
+ */
+
+ /* 
+    There are 4 types of combinators:
+    1. Adjacent sibling
+        div + p {}
+            a. Element shares the same parent;
+            b. Second element comes *immediately* after the first element
+
+    2. General sibling
+        div ~ p {}
+            a. Element shares the same parent;
+            b. Second element comes after the first element
+    
+    3. Child
+        div > p {}
+            Second element is a *direct* child of the first element
+
+    4. Descendant
+        div p {}
+            Second element is a descendant of the first element
+  */
