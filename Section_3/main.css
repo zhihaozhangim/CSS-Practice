@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    /* Body has a default margin */
+    margin: 0;
+}
+
+#product-overview {
+    /* url is a helper function which use the content from it
+       It can be http path or file path.
+     */
+    background: url("freedom.jpg");
+    width: 100%;
+    height: 528px;
+    padding: 10px;
+    /* border: 5px solid black;
+    margin: 10px; */
+
+    /* 
+        The following line means the height and width include the padding
+        and border. It's so commonly used so that we always want to include
+        it in the universal selector.
+     */
+    /* box-sizing: border-box; */
+
+    /* The following line means if we set a width or height, we set the
+       width and height of the content, not including padding, border.
+       content-box is the default value for box-sizing.
+     */
+    /* box-sizing: content-box; */
+
+    /* For both box-sizing cases, margin is never included. */
+
+
+    /* The following line will not give the element 100% height for the page,
+       it just gives it the whole available height for its parent container.
+     */
+    /* height: 100%; */
+
+    /* The following line doesn't work becasue section is a block element,
+       and block element takes 100% width by default.
+     */
+    /* width: 100% */
+
+    /* padding: 20px;
+    border-style: solid;
+    border-color: black;
+    border-width: 5px; */
+
+    /* The following line is short for the above lines */
+    /* border: 5px black solid; */
+
+    /* margin: 20px; */
+}
+
+.section-title {
+    color: #2ddf5c;
+}
+
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+}
+
+.main-header {
+    /* Width is optional, because block element will take 100% width by default */
+    width: 100%; 
+    background-color: #2ddf5c;
+    padding: 8px 16px;
+}
+
+.main-header > div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-header__brand {
+    color: #0e4f1f;
+
+    /* For an anchor tag, the browser will add an underline to the name.
+       test-decoration: none will help us remove the underline.
+     */
+    text-decoration: none;
+
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.main-nav {
+    display: inline-block;
+
+    /* The following line will align the child to the right */
+    text-align: right;
+
+    /* Calc is a built in function which will return the width we need
+       by substracting the percentage of the screen by pixel.
+     */
+    width: calc(100% - 74px);
+
+    vertical-align: middle;
+}
+
+.main-items {
+    margin: 0;
+    padding: 0;
+
+    /* The following property and value will remove the bullet point style */
+    list-style: none;
+}
+
+.main-nav__item {
+    /* Inline-block is a mixture of inline and block elements.
+       1. The elements will be put in the same line, if space allowed, like inline element.
+       2. It behaves like block element in that we can set its padding, margin, which is not possible
+          for inline elements.
+       BTW, it doesn't make much sense to set padding or margin for inline element.
+     */
+    display: inline-block;
+
+    /* The first one refers top and bottom, the second one refers to left and right */
+    margin: 0 16px;
+}
+
+.main-nav__item a {
+    text-decoration: none;
+    color: #0e4f1f;
+    font-weight: bold;
+    /* Add a padding between the anchor tag and the bottom border line */
+    padding: 3px 0;
+}
+
+/* The following is an example of pseudo-element, which controls the element.
+   E.g. content property will add content to the DOM element. (It shouldn't be used
+   to perform some crucial renderding).
+ */
+/* .main-nav__item a::after {
+    content: " (LINK)";
+    color: red;
+} */
+
+/* :hover and :active are two of the pseudo-classes we can add to selector.
+   The style will be applied once the event is triggered. It allows us
+   to be more precise about the status of the html element.
+ */
+/* .main-nav__item a:hover {
+    color: white; 
+}
+
+/* There is also a thing called pseudo-element, which is used to select specific
+   part of elements, like the first letter, line of an element.
+   Read more: https://www.w3schools.com/css/css_pseudo_elements.asp
+ */
+
+.main-nav__item a:active {
+    color: white; 
+} */
+
+/* Grouping the above two rules */
+.main-nav__item a:hover,
+.main-nav__item a:active {
+    color: white; 
+    border-bottom: 5px solid white;
+}
+
+/* cta stands for Call to Action */
+.main-nav__item--cta a {
+    color: white;
+    background: #ff1b68;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.main-nav__item--cta a:hover,
+.main-nav__item--cta a:active {
+    color: #ff1b68;
+    background: white;
+    border: none;
+}
+
+/* 
+    display:none Vs. visibility: hidden
+
+    1. display: none;  - this value removes the element to which you apply 
+    it from the document flow. This means that the element is not visible 
+    and it also doesn't "block its position". Other elements can (and will) 
+    take its place instead;
+
+    2. visibility: hidden; - If you only want to hide an element but you 
+    want to keep its place (i.e. other elements don't fill the empty spot), 
+    you can use visibility: hidden; 
+ */
+
+ /* 
+    Block-level elements Vs. inline elements
+    1. Block-level elements are rendered as a block and hence take up all 
+       the available horizontal space. You can set margin-top and margin-bottom 
+       and two block-level elements will render in two different lines.
+
+       Some examples are: <div>, <section> , <article> , <nav>  but also 
+       <h1> , <h2>  etc and <p>.
+
+    2. Inline elements on the other hand only take up the space they require 
+       to fit their content in. Hence two inline-elements will fit into the 
+       same line (as long as the combined content doesn't take up the entire 
+       space in which case a line break would be added).
+
+       ****They also use the box-model you learned about but margin-top and 
+       margin-bottom  have no effect on the element. padding-top and 
+       padding-bottom also have a different effect, which makes no sense so don't
+       use it ever. ****
+       Additionally, setting a width  or height on an inline element also 
+       has no effect. The width and height is auto to take as much space as 
+       required by the content. 
+       Some example elements are: <a> , <span> , <img> 
+
+    3.  If you need both block-level and inline behavior, you can set display: 
+        inline-block to merge behaviors.
+  */
