@@ -1,63 +1,15 @@
-* {
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    /* Body has a default margin */
-    margin: 0;
-}
-
 #product-overview {
-    /* url is a helper function which use the content from it
-       It can be http path or file path.
-     */
     background: url("freedom.jpg");
     width: 100%;
     height: 528px;
     padding: 10px;
-    /* border: 5px solid black;
-    margin: 10px; */
-
-    /* 
-        The following line means the height and width include the padding
-        and border. It's so commonly used so that we always want to include
-        it in the universal selector.
-     */
-    /* box-sizing: border-box; */
-
-    /* The following line means if we set a width or height, we set the
-       width and height of the content, not including padding, border.
-       content-box is the default value for box-sizing.
-     */
-    /* box-sizing: content-box; */
-
-    /* For both box-sizing cases, margin is never included. */
-
-
-    /* The following line will not give the element 100% height for the page,
-       it just gives it the whole available height for its parent container.
-     */
-    /* height: 100%; */
-
-    /* The following line doesn't work becasue section is a block element,
-       and block element takes 100% width by default.
-     */
-    /* width: 100% */
-
-    /* padding: 20px;
-    border-style: solid;
-    border-color: black;
-    border-width: 5px; */
-
-    /* The following line is short for the above lines */
-    /* border: 5px black solid; */
-
-    /* margin: 20px; */
 }
 
 .section-title {
     color: #2ddf5c;
+
+    /* Center the title */
+    text-align: center;
 }
 
 #product-overview h1 {
@@ -65,157 +17,130 @@ body {
     font-family: 'Anton', sans-serif;
 }
 
-.main-header {
-    /* Width is optional, because block element will take 100% width by default */
-    width: 100%; 
-    background-color: #2ddf5c;
-    padding: 8px 16px;
+.plan__list {
+    width: 80%;
+    /* margin: auto here will make element in the middle of the available width
+       that's to say, it will set margin-left = margin-right. It has no effect on 
+       top and bottom.
+    */
+    margin: auto;
+
+    /* The block is in the middle. However, the content in this block is not
+       centered. The following rule will make the content inside in the middle
+       of the block.
+    */
+    text-align: center;
 }
 
-.main-header > div {
+.plan {
+    background: #d5ffdc;
+    text-align: center;
+    padding: 16px;
+    margin: 8px;
+
+    /* Make each section an inline-block, which could be aligned on the same line */
     display: inline-block;
+    
+    /* Doing so will give each section a width of 30% of the container, which makes it responsive. */
+    width: 30%;
+    
     vertical-align: middle;
 }
 
-.main-header__brand {
-    color: #0e4f1f;
-
-    /* For an anchor tag, the browser will add an underline to the name.
-       test-decoration: none will help us remove the underline.
-     */
-    text-decoration: none;
-
-    font-weight: bold;
-    font-size: 22px;
-}
-
-.main-nav {
-    display: inline-block;
-
-    /* The following line will align the child to the right */
-    text-align: right;
-
-    /* Calc is a built in function which will return the width we need
-       by substracting the percentage of the screen by pixel.
-     */
-    width: calc(100% - 74px);
-
-    vertical-align: middle;
-}
-
-.main-items {
-    margin: 0;
-    padding: 0;
-
-    /* The following property and value will remove the bullet point style */
-    list-style: none;
-}
-
-.main-nav__item {
-    /* Inline-block is a mixture of inline and block elements.
-       1. The elements will be put in the same line, if space allowed, like inline element.
-       2. It behaves like block element in that we can set its padding, margin, which is not possible
-          for inline elements.
-       BTW, it doesn't make much sense to set padding or margin for inline element.
-     */
-    display: inline-block;
-
-    /* The first one refers top and bottom, the second one refers to left and right */
-    margin: 0 16px;
-}
-
-.main-nav__item a {
-    text-decoration: none;
-    color: #0e4f1f;
-    font-weight: bold;
-    /* Add a padding between the anchor tag and the bottom border line */
-    padding: 3px 0;
-}
-
-/* The following is an example of pseudo-element, which controls the element.
-   E.g. content property will add content to the DOM element. (It shouldn't be used
-   to perform some crucial renderding).
- */
-/* .main-nav__item a::after {
-    content: " (LINK)";
-    color: red;
-} */
-
-/* :hover and :active are two of the pseudo-classes we can add to selector.
-   The style will be applied once the event is triggered. It allows us
-   to be more precise about the status of the html element.
- */
-/* .main-nav__item a:hover {
-    color: white; 
-}
-
-/* There is also a thing called pseudo-element, which is used to select specific
-   part of elements, like the first letter, line of an element.
-   Read more: https://www.w3schools.com/css/css_pseudo_elements.asp
- */
-
-.main-nav__item a:active {
-    color: white; 
-} */
-
-/* Grouping the above two rules */
-.main-nav__item a:hover,
-.main-nav__item a:active {
-    color: white; 
-    border-bottom: 5px solid white;
-}
-
-/* cta stands for Call to Action */
-.main-nav__item--cta a {
+.plan--highlighted {
+    background: #19b84c;
     color: white;
-    background: #ff1b68;
-    padding: 8px 16px;
+
+    /* 
+        The box-shadow CSS property adds shadow effects around an element's 
+        frame. You can set multiple effects separated by commas. A box shadow 
+        is described by X and Y offsets relative to the element, blur and 
+        spread radius, and color.
+
+        The rgba() function define colors using the Red-green-blue-alpha (RGBA) model.
+        1 is fully opaque, 0 is fully transparent.
+    */
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.plan__annotation {
+    background: white;
+    color: #19b84c;
+    padding: 8px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    
+    /* Add radius to the box. The first one applies to the top left, clockwise  */
     border-radius: 8px;
 }
 
-.main-nav__item--cta a:hover,
-.main-nav__item--cta a:active {
-    color: #ff1b68;
-    background: white;
-    border: none;
+.plan__features {
+    /* Remove the bullet point style for list items. */
+    list-style: none;
 }
 
-/* 
-    display:none Vs. visibility: hidden
+/* Select all li element which are descendants of div having a class of .plan-features */
+.plan__features li {
+    margin: 8px 0;
+}
 
-    1. display: none;  - this value removes the element to which you apply 
-    it from the document flow. This means that the element is not visible 
-    and it also doesn't "block its position". Other elements can (and will) 
-    take its place instead;
 
-    2. visibility: hidden; - If you only want to hide an element but you 
-    want to keep its place (i.e. other elements don't fill the empty spot), 
-    you can use visibility: hidden; 
- */
+#key-features {
+    background: #ff1b68;
+    margin-top: 80px;
+    padding: 16px;
+}
 
- /* 
-    Block-level elements Vs. inline elements
-    1. Block-level elements are rendered as a block and hence take up all 
-       the available horizontal space. You can set margin-top and margin-bottom 
-       and two block-level elements will render in two different lines.
+#key-features .section-title {
+    color: white;
+    margin: 32px;
+}
 
-       Some examples are: <div>, <section> , <article> , <nav>  but also 
-       <h1> , <h2>  etc and <p>.
+.key-feature__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
 
-    2. Inline elements on the other hand only take up the space they require 
-       to fit their content in. Hence two inline-elements will fit into the 
-       same line (as long as the combined content doesn't take up the entire 
-       space in which case a line break would be added).
+.key-feature {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
 
-       ****They also use the box-model you learned about but margin-top and 
-       margin-bottom  have no effect on the element. padding-top and 
-       padding-bottom also have a different effect, which makes no sense so don't
-       use it ever. ****
-       Additionally, setting a width  or height on an inline element also 
-       has no effect. The width and height is auto to take as much space as 
-       required by the content. 
-       Some example elements are: <a> , <span> , <img> 
+.key-feature__image {
+    background: #ffcede;
+    width: 128px;
+    height: 128px;
+    border: 2px solid #424242;
+    border-radius: 50%;
 
-    3.  If you need both block-level and inline behavior, you can set display: 
-        inline-block to merge behaviors.
-  */
+    /* Set margin to auto will make the item in the middle of its container
+       That's to say, it will make the marginLeft and marginRight equal. However,
+       it doesn't work for top and bottom, just left and right.
+     */
+    margin: auto;
+}
+
+.key-feature__description {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
+.plan__title {
+    color: #0e4f1f;
+}
+
+.plan__price {
+    color: #858585;
+}
+
+.plan--highlighted .plan__title {
+    color: white;
+}
+
+.plan--highlighted .plan__price {
+    color: #0e4f1f;
+}

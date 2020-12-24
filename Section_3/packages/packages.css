@@ -1,0 +1,92 @@
+main {
+    padding-top: 32px;
+}
+
+.package {
+    width: 80%;
+    margin: 16px 0;
+    border: 4px solid #0e4f1f;
+    border-left: none;
+}
+
+.package:hover,
+.package:active {
+    /* The following property will add shadow to an element, the order of params are:
+       horizontal, vertical, blur, color.
+     */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-color: #ff5454;
+}
+
+.package a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 32px;
+}
+
+.package__subtitle {
+    color: #979797;
+}
+
+.package__info {
+    padding: 16px;
+    border: 1px solid #0e4f1f;
+    font-size: 20px;
+    color: #0e4f1f;
+    background: white;
+}
+
+/* When use float, clear: both rule will prevent the latter section
+   from taking the place which is made becasue of the previous section
+   is moved to otherside using float.
+*/
+.clearfix {
+    clear: both;
+}
+
+#plus {
+    background: rgba(213, 255, 220, 0.95);
+}
+
+#free {
+    background: rgba(234, 252, 237, 0.95);
+
+    /* The following property float: right is used to overwrite the previous
+       positioning of the element. The value of right will push the block level
+       element to the right of the screen.
+
+       One thing to note is that float will take the element out of the original
+       document float, so other block-level element will take its place. To make it
+       look right, we need to do some hacking here. That's why float is rarely used
+       nowadays. 
+     */
+    float: right;
+
+    border-right: none;
+    border-left: 4px solid #0e4f1f;
+    text-align: right;
+}
+
+/* One issue arises when we mouse over the sections. Because free is an id
+   selector, which has the highest priority. The property we set with the hover
+   pseduo-class will be overriden, so that it has no effect here. The following
+   rule is used to fix this issue.
+*/
+
+#free:hover,
+#free:active {
+    border-left-color: #ff5454;
+}
+
+#premium {
+    background: rgba(14, 79, 31, 0.95);
+}
+
+#premium .package__title {
+    color: white;
+}
+
+#premimum .package__subtitle {
+    color: #bbb;
+}
