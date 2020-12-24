@@ -1,0 +1,55 @@
+html {
+    background: #b3b3b3;
+    padding: 15px;
+    border: 5px solid white;
+    margin: 15px;
+    height: 2000px;
+}
+
+body {
+    background: #fa923f;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+  }
+  
+.parent {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+  }
+  
+.parent div {
+    background: rgb(105, 105, 109);
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+}
+
+.parent .child-1 {
+  /* By applying position: fixed, the element with child-1 is taken out of
+     the normal document flow. That's to say, in the eyes of other elements, 
+     this element no longer exists in this place. Therefore, its place is taken. 
+  
+     Actually, the element is turned into an inline-block element. It just takes
+     the space it needs.
+  */
+  position: fixed;
+
+  /* By using fixed position, the position of the current element only depends
+     on the current viewpoint. That's to say, the value is relative to the current
+     viewpoint, not anything else.
+  */
+  top: 0;
+  left: 0;
+
+  /* Will make the width equal to content + padding + border, not including margin. */
+  box-sizing: border-box;
+  
+  width: 100%;
+  margin: 0;
+}
+
+/* Also, the fixed position applies to both block-level and inline html element. */
