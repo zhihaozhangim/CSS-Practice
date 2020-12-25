@@ -1,0 +1,93 @@
+html {
+    background: #b3b3b3;
+    padding: 15px;
+    border: 5px solid white;
+    margin: 15px;
+    height: 2000px;
+}
+
+body {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+    height: 400px;
+}
+  
+.navigation, .headline, .contact-us {
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+    position: fixed;
+}
+  
+.headline div {
+    background: rgb(105, 105, 109);
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    width: 130px;
+}
+
+.navigation {
+    background: rgb(255, 109, 109);
+    top: 100px;
+    left: 100px;
+    width: 300px;
+}
+
+.headline {
+    background: rgb(77, 77, 248);
+    top: 150px;
+    left: 150px;
+    width: 270px;
+    height: 200px;
+    z-index: 1;
+}
+
+.contact-us {
+    background: rgb(69, 214, 69);
+    top: 180px;
+    left: 320px;
+    width: 180px;
+    z-index: 100;
+}
+
+/* Here we introduce the idea of stacking context. The basic idea is that
+   inside a common parent element, the child elements it contains have the same
+   stacking context. That's to say, the z-index of the children only influence
+   the order of children.
+
+   An example is that since headline has a z-index of 1, and contact-us has a
+   z-index of 100, that makes the headline below the contact-us section. Since
+   image 1, 2 and 3 are children of headline, even if we change the z-index of
+   image-2 to 1000, the image-2 will not be above the contact-us. Since its z-index
+   only influences the order of the other children, it will be above image-1 and image-3,
+   but it will not be above contact-us. contact-us is above headline, which is the parent
+   of all the other images.
+*/
+
+.image-1 {
+    top: 200px;
+    left: 230px;
+    position: fixed; 
+}
+
+.image-2 {
+    top: 230px;
+    left: 260px;
+    position: fixed;
+    /* One thing to note here is that when the value of position is fixed, a new
+       stack context will be created not matter what. However, if the value is
+       relative or absolute, stack context will be created only when the z-index is
+       set;
+    */
+    z-index: 1000;
+}
+
+.image-3 {
+    left: 300px;
+    top: 260px;
+    position: fixed;
+}

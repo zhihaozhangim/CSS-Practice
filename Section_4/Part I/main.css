@@ -11,6 +11,15 @@ body {
     padding: 20px;
     border: 5px solid black;
     margin: 0;
+
+    /* If we add a overflow: hidden right here, it will be 
+       moved to the html selector by default, it's the default
+       of browser so we cannot control it. The fix is to also add
+       overflow: hidden to the html selector up there. In this way,
+       the problem is fixed.
+
+       overflow: hidden;
+    */
   }
   
 .parent {
@@ -18,6 +27,14 @@ body {
     padding: 20px;
     border: 5px solid black;
     margin: 0;
+
+    /* By setting overflow: hidden, the child element will be hidden
+       once it is outside of the parent.
+
+       "Outside" can happen in cases like the child uses position: relative
+       to move out of the scope of the parent.
+    */
+    overflow: hidden;
   }
   
 .parent div {
@@ -53,3 +70,28 @@ body {
 }
 
 /* Also, the fixed position applies to both block-level and inline html element. */
+
+.parent .child-1 {
+  /* For position: relative, the positioning context is the element itself,
+     and it will not be taken out of the document flow.
+  */
+  position: relative;
+
+  /* 
+    That's tp say, by setting top and left to 50px, we push the current element
+    to the bottom, and to the right, by 50px.
+  */
+  top: 0;
+  left: 50px;
+
+  /* 
+  The following line will push the current element to the left by 50px. (Relative
+  to its current position.)
+  right: 50px;
+  */
+}
+
+/* 
+  To use top, right, bottom, left to position elements, the html element must
+  have a position property with a value different from static (the default value).
+*/

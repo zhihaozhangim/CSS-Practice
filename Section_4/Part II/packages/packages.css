@@ -2,11 +2,43 @@ main {
     padding-top: 32px;
 }
 
+.background {
+    background: url("../images/plans-background.jpg");
+    width: 100%;
+    height: 100%;
+
+    /* z-index can only be applied to elements with a position value
+       different from static (the default value).
+
+       -1 is smaller than the default value (auto = 0). So the image will
+       be behind other elements.
+    */
+    position: fixed;
+    z-index: -1;
+}
+
 .package {
     width: 80%;
     margin: 16px 0;
     border: 4px solid #0e4f1f;
     border-left: none;
+
+    /* Every element has a z-index of value 0 by default. auto = 0.
+       The bigger the value, the higher the element is. That's to say, 1 will be
+       above 0, and 0 will be above -1.
+
+       Note: z-index can only apply to element having position property with a value
+       not equal to static (the default value). It has no effect this position value.
+       For other position values, it works fine. That's why I set the position property
+       to the above background rule. 
+    */
+    z-index: auto;
+
+    /* position: relative will not take the current element out of the document flow
+       the positioning context of position: relative is itself. top, left, right, bottom
+       will push the element to the distance relative to its current position.
+    */
+    position: relative;
 }
 
 .package:hover,
@@ -20,6 +52,35 @@ main {
     color: inherit;
     display: block;
     padding: 32px;
+}
+
+.package__badge {
+    /* position: absolute will make the position of the current element
+       relative to the closest element with a position property. In this case,
+       the closest ancestor with a position property is the package class that
+       has a relative position. (Relative will not take the element out of the 
+       document flow).
+
+       In summary, fixed and absolute are comparable. They will take the current 
+       element out of the document flow, so that other elements will take the place.
+       Their difference is that the positioning context for fixed is always the viewport.
+       On the other hand, the positioning context for absolute is the closest ancestor
+       with a position value. (So the top, right, bottom, left will be relative to the 
+       containing element) If no ancestors having position value exists, the positioning 
+       context is the html file.
+
+       position: relative will not take the current element out of the document flow.
+    */
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    margin: 20px;
+    
+    font-size: 12px;
+    color: white;
+    background: #ff5454;
+    padding: 8px;
 }
 
 .package__subtitle {

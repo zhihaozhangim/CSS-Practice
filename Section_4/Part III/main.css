@@ -1,0 +1,53 @@
+html {
+    background: #b3b3b3;
+    padding: 15px;
+    border: 5px solid white;
+    margin: 15px;
+    height: 2000px;
+}
+
+body {
+    background: #fa923f;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 0;
+  }
+  
+.parent {
+    background: white;
+    padding: 20px;
+    border: 5px solid black;
+    margin: 10px;
+  }
+
+.parent .country {
+    background: #fa923f;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+
+    /* position: sticky is a combination of position fixed and relative.
+    
+       In terms of fixed: the element will behave like fixed element (we must
+       set a top property or bottom, left, right, even if the value is 0). The 
+       element will be fixed relative to the viewport.
+
+       In terms of position: relative: the element will be invisible (that's to
+       say, the element will be moved out of viewport) once its containing element
+       (its parent component) is moved out of scope.
+
+       One thing to note is that since the sticky property is rather new, its
+       browser support is not perfect, so do not use it in most of the cases.
+    */
+    position: sticky;
+    top: 20px;
+}
+  
+.parent .cities {
+    background: rgb(105, 105, 109);
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+}
