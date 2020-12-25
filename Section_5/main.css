@@ -1,0 +1,263 @@
+
+
+#product-overview {
+    /* The stack of background color, the one that appears before will be above the one
+       that appears later. That's to say, linear-gradient will be above url, which will be
+       above #ff1b68.
+
+       If we want to use stacked background, each part should be separate by a comma.
+    */
+    background: linear-gradient(to top, rgba(80, 68, 18, 0.6) 10%, transparent), 
+                url("images/freedom.jpg") left 10% bottom 20%/cover no-repeat border-box, 
+                #ff1b68;
+
+    /* Radial gradient */
+    /* The default behavior of radial-gradient, which is like radial-gradient(red, blue),
+       red will start in the middle, it's an ellipse. The surrounding area is blue.
+       
+       Like linear-gradient, we can specifiy as many colors as we want, like radial-gradient(red, blue, green).
+
+       We can also specify the shape of the initial color, the alternative to ellipse is circle.
+       radial-gradient(circle, red, blue).
+       Also, we can indicate the position of center of the shape, for example, if
+       the value is radial-gradient(circle at left top, red, blue), the center of the
+       circle will be at the top left corner.
+       And we can indicate the position as a percentage number. For example, 
+       radial-gradient(circle at 20% 50%, red, blue), means the x-axis should start
+       at 20%, the y axis will start in the middle.
+
+       Also, we can indicate the size of the circle, like radial-gradient(circle 20px at 20% 50%, red, blue).
+
+    */
+
+    /* background-image: radial-gradient(circle at 20% 50%, red, blue); */
+
+
+    /* Linear gradient */
+
+    /* background gradient is treated as background image. That's to say,
+       if we want to set a gradient color, we should use background-image (if
+       we don't use the shorthand version).
+    */
+
+    /* linear-gradient is a built-in function in css which could be used
+       to set gradient color. The default direction is from top to bottom. 
+       That's to say, if we set linear-gradient(red, blue). The gradient would
+       be from red to blue, from top to bottom.
+
+       We can also indicate the direction for the gradient, the syntax is
+       linear-gradient(to bottom, red, blue), which means from top to bottom.
+       linear-gradient(to left bottom, red, blue), which means from top right to bottom left.
+       linear-gradient(30deg, red, blue), which means the color has 30 degree angle.
+       linear-gradient(30deg, red, blue, orange, white), which means we can indicate as many colors as we want.
+
+       There is a special value called transparent. like linear-gradient(red, transparnt),
+       it means the color transit from red to transparent.
+
+       One thing to know is that we can use the name of the color, hex code, or rgba.
+
+       Also, there is one syntax which is like this, linear-gradient(red 70%, blue), which means for
+       the first 70%, the color is pure red, and after that, the colors transit into blue.
+    */
+    /* background-image: linear-gradient(30deg, red, transparent); */
+
+    /* background: url("freedom.jpg"); */
+
+    /* background-size takes 2 params, the first one is the width, and the
+       second one is the height. If we don't indicate the height, the height
+       will be automatically set to keep the previous aspect ratio of the image.
+
+       If we set background-size: auto 100%, the height is 100% of the height of
+       the container, the width will be set automatically that respects the original
+       aspect ratio.
+
+       There are two automatic values for background-size, cover and container. 
+       cover: it will make sure the image takes the full dimension of the container.
+              However, it cannot guarantee all parts of the image are not cropped.
+       contain: it will make sure every corner of the image will be visible. However,
+                it cannot make sure that the full dimension of the container is taken.
+
+       For both cases, the background position need to be adjusted. Here we got the
+       background-position property to do it.
+    */
+    /* background-size: cover; */
+
+    /* background position is used to indicate how to position the background
+       image. 
+
+       Whether the value is a pixel or percentage makes a difference here. If
+       the value is pixel, it's the distance to the left, top, right, bottom.
+       If the value is percentage, it indicates how the parts of image that
+       are cropped should distribute. The default value for x and y axis is
+       50%, which means if the image doesn't fit, 50% should be cut from the
+       top (left) and the other 50% for the bottom (right). Let's say, if we 
+       set the percentage to 10% for y axis, 10% will be cut from the top, 90%
+       will be from the bottom, which will make the element move down. If the value
+       is 100%, it means if the image is cropped, all the cropped parts should be
+       from the top.
+       There is a auto value for the property, which is center. It's equal to
+       background-position: 50% 50% (Vertically, 50% from top, 50% from bottom,
+       and horizontally, 50% from left and 50% from right).
+       There is also rule written like this - background-position: left bottom,
+       it means if the image doesn't fit horizontally, left part should be cut, only
+       cut the right part. If the image doesn't fit vertically, the bottom part
+       should be cut, only the top part should be cut.
+       Also, we can indicate percentage, like left 10% bottom 20%, it means cut 10%
+       from left (90% will be cut from right), and cut 20% from bottom (80% will be
+       cut from the top).
+
+       If the value is pixel, like background-position: 4px 8px;
+       The first value is the distance to the left side of the container;
+       The second value is the distance to the top of the container;
+
+    */
+    /* background-position: left 10% bottom 20%;
+    background-repeat: no-repeat; */
+    width: 100%;
+    height: 528px;
+    padding: 10px;
+    margin-top: 43px;
+    position: relative;
+
+    /* 
+        background-orgin is comparable to border-box. The gist of its property is
+        to set - What should be considered as the container for the image.
+        1. If we set the value to be content-box: only the content of the box model
+        should be considered as the container.
+        2. If we set the value to be border-box: the content, padding, and border
+        all together will be considered as the container.
+        3. The default value is padding-box: the content and padding will be considered
+        as the container for the image. One thing to note is that if in one direction, the
+        image cannot fully fit, the border will also be included, which makes it look
+        like the border is also container.
+    */
+    background-origin: border-box;
+    /* border: 10px dashed red; */
+
+    /* background-clip defines where the image should be clipped if necessary.
+       If we set the value to be:
+       1. padding-box: the image will be clipped after the padding.
+       2. content-box: the image will be clipped after the content.
+    */
+    background-clip: border-box;
+
+    /* shorthand for background image
+       The syntax is as follows: background-image background-position/background-size background-repeat background-origin background-clip
+
+       For background-origin and background-clip, we can set them separately. However,
+       if we only set one value for these two properties, like border-box, it will
+       apply to both background-origin and background-clip.
+    */
+    /* background: url("freedom.jpg") left 10% bottom 20%/cover no-repeat border-box; */
+}
+
+.section-title {
+    color: #2ddf5c;
+    text-align: center;
+}
+
+#product-overview h1 {
+    color: white;
+    font-family: 'Anton', sans-serif;
+    position: absolute;
+    left: 3%;
+    bottom: 5%;
+}
+
+.plan__list {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.plan {
+    background: #d5ffdc;
+    text-align: center;
+    padding: 16px;
+    margin: 8px;
+    display: inline-block;
+    width: 30%;
+    vertical-align: middle;
+}
+
+.plan--highlighted {
+    background: #19b84c;
+    color: white;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.plan__annotation {
+    background: white;
+    color: #19b84c;
+    padding: 8px;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.plan__title {
+    color: #0e4f1f;
+}
+
+.plan__price {
+    color: #858585;
+}
+
+.plan--highlighted .plan__title {
+    color: white;
+}
+
+.plan--highlighted .plan__price {
+    color: #0e4f1f;
+}
+
+.plan__features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.plan__feature {
+    margin: 8px 0;
+}
+
+#key-features {
+    background: #ff1b68;
+    margin-top: 80px;
+    padding: 16px;
+}
+
+#key-features .section-title {
+    color: white;
+    margin: 32px;
+}
+
+.key-feature__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.key-feature {
+    display: inline-block;
+    width: 30%;
+    vertical-align: top;
+}
+
+.key-feature__image {
+    background: #ffcede;
+    width: 128px;
+    height: 128px;
+    border: 2px solid #424242;
+    border-radius: 50%;
+    margin: auto;
+    padding: 20px;
+}
+
+.key-feature__description {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
