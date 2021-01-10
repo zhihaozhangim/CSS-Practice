@@ -1,0 +1,99 @@
+main {
+    padding-top: 1rem;
+}
+
+.signup-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ff5454;
+}
+
+.signup-form {
+    padding: 1rem;
+}
+
+.signup-form label {
+    font-weight: bold;
+}
+
+.signup-form label,
+.signup-form select,
+.signup-form input {
+    display: block;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+
+/* attribute selector with a type attribute, the value of which is checkbox */
+/* .signup-form input[type="checkbox"] */
+
+/* attribute selector with an id attribute, and the value contains a "terms" somewhere between */
+.signup-form input[id*="terms"],
+.signup-form input[id*="terms"] + label {
+    display: inline-block;
+    width: auto;
+    vertical-align: middle;
+}
+
+/* 
+    not is a pseduo-class selector, which means select all input as long
+    as its type is not checkbox.
+*/
+/* .signup-form input:not([type="checkbox"]), */
+.signup-form input:focus,
+.signup-form select:focus {
+    border: 1px solid #ccc;
+    padding: 0.2rem 0.5rem;
+    /* Use the default font setup for the browser. */
+    font: inherit;
+}
+
+.signup-form input[type="checkbox"] {
+    border: 1px solid #ccc;
+    background: white;
+    width: 1rem;
+    height: 1rem;
+    /* The following attributes are browser-specific */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.signup-form input.invalid,
+.signup-form select.invalid
+/* 
+    :invalid is a pseduo selector which selects all input that are not valid.
+    :valid is its counterpart, it selects all input that are valid.
+*/
+.signup-form :invalid {
+    border-color: red !important;
+    background: #faacac;
+}
+
+/* pseduo class selector which will be applied when the checkbox is selected */
+.signup-form input[type="checkbox"]:checked {
+    background: #2ddf5c;
+    border: #0e4f1f;
+}
+
+/* Change the style of the input and select when they are selected. */
+.signup-form input:focus,
+.signup-form select:focus {
+    outline: none;
+    background: #d8f3df;
+    border-color: #2ddf5c;
+}
+
+.signup-form button[type="submit"] {
+    display: block;
+    margin-top: 1rem;
+}
+
+@media (min-width: 40rem) {
+    .signup-form {
+        margin: auto;
+        width: 25rem;
+    }
+}
