@@ -1,0 +1,148 @@
+.container {
+    margin: 20px;
+
+    /* Set the container to be a CSS grid container */
+    display: grid;
+
+    /* 
+        grid-template-columns defines how many columns we should have.
+        For the following rule, there are 5 cols, the first col take 200px,
+        the second col takes 150px, the third col takes 20% of the width.
+        fr means fraction. For the forth and fifth col, the remaining space
+        is distributed evenly between them. 
+
+        We can use auto as a value, it means the grid cell will take all the available
+        width.
+    */
+    /* grid-template-columns: 200px 150px 20% 1fr 1fr; */
+    /* grid-template-columns: 200px 1fr 20% 1fr; */
+    
+    /* 
+        If we want to create 4 grid cells with each width, we can write
+        it like the following. But it's a little annoying. One conveninent
+        way to do it is to use a built-in css function:
+        repeat(the # you want to repeat, repeat pattern)
+        repeat(4, 25%) means repeat 25% for 4 times.
+    */
+    /* grid-template-columns: 25% 25% 25% 25%; */
+
+    grid-template-columns: repeat(4, 25%);
+
+
+
+
+    /* 
+        grid-template-rows defines how many rows we want to have.
+        The following rule means there are 2 rows, the first row takes the 
+        height of 5rem, the second row takes 2.5rem.
+
+        We can use auto as a value, it means the grid cell will take the height
+        it needs.
+
+        There is another useful helper function, minmax(px, px). The first argument
+        is the min width/height, the second one is the max. If there is enough space,
+        the element will take the max. If the space is quite limited, the element will
+        take at least min space. If the space is somewhere in the between, the width/height
+        is between min and max.
+
+        The grid system can be visualize as the following:
+        
+        1   5rem    2   minmax(10px, auto)  3   100px   4   
+        Sometimes the line number is hard to reason about, to fix this issue,
+        we can give alias to the line. Take a look at the following synyax.
+        Now, line 1 can be referred to as row-1-start, line 2 can be referred to
+        as row-1-end or row-2-start (we can give multiple names to one line.). In
+        the following, we can use the alias to replace the line number. (Like in 
+        grid-row-start grid-column-end, etc.)
+    */
+    grid-template-rows: [row-1-start] 5rem [row-1-end row-2-start] minmax(10px, auto) [row-2-end row-3-start] 100px [row-3-end];
+
+    /* 
+        We can also add gaps to the grid system. By adding a gap, the line becomes:
+        line1
+        /////
+        line1
+
+        The line has some space in between.
+    */
+
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+
+    /* 
+        The above syntax can be shorted by:
+        grid-gap: row-gap col-gap;
+
+        Here comes another one:
+        grid-gap: value;
+        It will set the same gap for both row and col.
+    */
+}
+
+.el1 {
+    background: rgba(255, 154, 72, 0.5);
+}
+
+.el2 {
+    background: rgba(255, 0, 0, 0.5);
+
+    /* 
+        How to make an element span the whole row? Of course we can specify the
+        start and end, or span. But we would need to manually change the number 
+        once a new column is added. The easy way is to use negative number.
+        -1 means the last line, -2 means the second to last line.
+    */
+    /* grid-column-start: 1;
+    grid-column-end: -1; */
+
+    /* 
+        Here is a shorthand. The above syntax can be shorted by the following
+    */
+    grid-column: 1 / -1;
+}
+
+.el3 {
+    background: rgba(0, 128, 0, 0.5);
+
+    /* 
+        Here comes the grid line number system, which is clearer using Firefox.
+        Simply put, the grid column starts with number 1. The left corner of the first
+        grid cell is 1, the right corner is 2, and so on. grid-column-start means the element
+        starts at which line number. For this one, it starts at the start point of the 
+        third grid cell, and ends at the right corner of the forth grid cell,
+        which means the element takes two grid cells in the grid system.
+    */
+    grid-column-start: 2;
+    /* 
+        If we want the element spans two grid cells, one way is to specify the
+        start and end index, like below. Another way is to use span keyword to 
+        specify how many cells we want the current element to occupy.
+    */
+    /* grid-column-end: 5; */
+    grid-column-end: span 3;
+
+    /* 
+        grid-row-start and grid-row-end are very similar to grid-column-start and -end.
+        They defines the line number the element should start or end vertically.
+        For the element, it starts at the top corner of the first grid cell, and ends at the
+        bottom corner of the second grid cell. It means the element takes the height of 2 grid
+        cells.
+    */
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    /* 
+        grid-row-start/end grid-column-start/end can be shorted using
+        grid-area: row-start / col-start / row-end / col-end;
+
+        The above can be written as:
+
+        grid-area: 1 / 3 / 2 / span 3;
+    */
+
+
+}
+
+.el4 {
+    background: rgba(0, 4, 255, 0.5);
+}
