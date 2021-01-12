@@ -1,0 +1,161 @@
+* {
+    box-sizing: border-box;
+    font-size: 1.5rem;
+}
+
+html {
+    background: #b3b3b3;
+    padding: 5px;
+}
+
+body {
+    background: #b3b3b3;
+    padding: 5px;
+    margin: 0;
+  }
+  
+.flex-container {
+    background: white;
+    padding: 10px;
+    border: 5px solid black;
+    height: 800px;
+    /* Adding this property will make the element a flex container */
+    display: flex;
+
+    /* 
+        The default value for flex-direction is row.
+        direction               main                cross               starting point
+        row                   left to right        top to bottom        top left corner
+        row-reverse           right to left        top to bottom        top right corner
+        column                top to bottom        left to right        top left corner
+        column-reverse        bottom to top        left to right        bottom left corner
+    */
+    flex-direction: row;
+    /* flex-direction: column; */
+
+    /* The default value for flex-wrap is nowrap */
+    /* flex-wrap: nowrap; */
+    /* By using wrap, the elements will wrap if there is not enough space */
+    flex-wrap: wrap;
+
+    /* flex-flow is short for flex-direction and flex-wrap, the above two properties can be written as: */
+    /* flex-flow: row wrap; */
+
+    /* align-items will align the items along the cross axis. The default value is stretch */
+    align-items: center;
+
+    /* justify-content will align element along the main axis. */
+    justify-content: flex-start;
+
+    /* 
+        align-content will come into play when our flex items have at least 2
+        rows or 2 columns, along the cross axis.
+     */
+    /* align-content: center; */
+  }
+
+.item-1 {
+    background: #ff7300;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+
+    /* 
+        order is a property that comes with flex items, the bigger it is,
+        the latter it will appear.
+
+        In this case, the default value for order is 0. By setting this order
+        to be 1, the element will be at the last position.
+    */
+    /* order: 1; */
+}
+
+.item-2 {
+    background: #ff9640;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    width: 250px;
+    font-size: 1.8rem;
+}
+
+.item-3 {
+    background: #ff9640;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    height: 250px;
+
+    /* 
+        The property align-self will align a single flex item along the cross axis.
+    */
+    /* align-self: flex-start; */
+}
+
+.item-4 {
+    background: #f5c096;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+}
+
+.item-5 {
+    background: #d3c0b1;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    width: 350px;
+
+    /* 
+        flex-grow is used to distribute the extra space. The default value is 1.
+
+        If we set the flex-grow current element to be 1, and the next one to be 4,
+        when there are extra space available, 1/5 will be given to the current element,
+        and 4/5 will be given to the next one.
+    */
+    /* flex-grow: 1; */
+
+    /* 
+        The counterpart of flex-grow is flex-shrink. The default value is 1, which
+        means when shrink is performed, all elements should be shrinked evenly,
+
+        If we set the value to 0, it means the element cannot be shrinked.
+
+        If we set the flex-shrink of the current element to 1(default), and the next 
+        to 4, when shrink happens, the shrink of the last element is 4 times as fast
+        as the other elements.
+    */
+    /* flex-shrink: 1; */
+
+    /* 
+        flex-basis depends on the main axis and cross axis.
+        If the main axis is from left to right, or right to left, the flex-basis
+        actually defines the width of the element.
+        If the main axis is from top to bottom, or from bottom to top, the flex-basis
+        actually defines the height of the element.
+
+        flex-basis only applies to flex items.
+    */
+    /* flex-basis: 200px;
+    flex-basis: 10%; */
+}
+
+.item-6 {
+    background: #d3c0b1;
+    color: white;
+    padding: 10px;
+    border: 5px solid black;
+    margin: 10px;
+    width: 350px;
+
+    /* flex-grow: 4; */
+
+    /* flex-shrink: 4; */
+}
